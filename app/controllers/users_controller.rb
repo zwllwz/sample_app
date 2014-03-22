@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample app!"
+      sign_in @user
+      flash[:success] = "Welcome to the Sample App!"
       #Rails knows that @user is an active record object, 
       #so it interprets that as knowing you want to go to 
       #the show page for the object.
